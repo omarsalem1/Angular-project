@@ -1,0 +1,58 @@
+<button type="button" class="btn btn-dark" (click)="show()">Create</button>
+<div class="form-inline" [hidden]="showflag">
+<div class="form-group">
+  <label for="">ID</label>
+  <input  type="text" [(ngModel)]="nstd.id"  class="form-control" placeholder="" aria-describedby="helpId">
+  
+</div>
+<div class="form-group">
+    <label for="">Name</label>
+    <input  type="text" [(ngModel)]="nstd.name"  class="form-control" placeholder="" aria-describedby="helpId">
+    
+  </div>
+  <div class="form-group">
+    <label for="">Age</label>
+    <input  type="text" [(ngModel)]="nstd.age"  class="form-control" placeholder="" aria-describedby="helpId">
+    
+  </div>
+<button type="button" class="btn btn-success" (click)="addstud()">Save</button>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>opertions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let stud of stds; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{stud.id}}</td>
+            <td>{{stud.name}}</td>
+            <td>{{stud.age}}</td>
+            <td>
+                <button type="button" class="btn btn-danger"(click)="deletestud(stud.id)">Delete</button>
+                <button type="button" class="btn btn-outline-primary"(click)="showeditf(stud.id)">Edit</button>
+            </td>
+        
+            
+        </tr>
+        
+
+</table>
+<div class="form-inline" [hidden]="showedit">
+<div class="form-group">
+    <label for="">Name</label>
+    <input  type="text" [(ngModel)]="estd.name"  class="form-control" placeholder="" aria-describedby="helpId">
+    
+  </div>
+  <div class="form-group">
+    <label for="">Age</label>
+    <input  type="text" [(ngModel)]="estd.age"  class="form-control" placeholder="" aria-describedby="helpId">
+    
+  </div>
+<button type="button" class="btn btn-success" (click)="editstud()">Save</button>
+</div>

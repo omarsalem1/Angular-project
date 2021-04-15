@@ -1,0 +1,33 @@
+<div class="container"[hidden]="showcreateflag">
+    <app-department-add (ondeptadd)="add($event)"> </app-department-add>
+</div>
+<div class="container" *ngIf="deleteflag">
+    <app-department-delete [dept]="deptdelete "(ondeptdelete)="delete($event)"></app-department-delete>
+    </div>
+<button type="button" class="btn btn-outline-secondary" (click)="showcreate()">create</button>
+<table class="table table-striped table-bordered table-responsive">
+    <thead class="thead-inverse">
+        <tr>
+            <th>#</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Capacity</th>
+            <th>operations</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of depts;let i =index">
+                <td scope="row" >{{i+1}}</td>
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.cap}}</td>
+                <button type="button" class="btn btn-danger" (click)="showdelete(item.id)">Delete</button>
+                <a name="" id="" class="btn btn-primary"(click)="showedit(item.id)">Edit</a>
+            </tr>
+            
+        </tbody>
+</table>
+<div class="container" *ngIf="editflag">
+    <app-department-edit [dept]="deptedit" (ondeptedit)="edit($event)"></app-department-edit>
+    
+</div>
